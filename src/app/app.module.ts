@@ -13,22 +13,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { SharedModule } from './components/shared.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MainLayoutModule } from './components/main-layout/main-layout.module';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PrincipalComponent,
+
   ],
   imports: [
-    SharedModule,
+
     HttpClientModule,
     NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MainLayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

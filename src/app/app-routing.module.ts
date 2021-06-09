@@ -1,27 +1,43 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 
 const routes: Routes = [
 
-    // {
-    //     path: 'home',
-    //     loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
-    // },
+
+    {
+        path: 'auth',
+        loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule),
+    },
     {
         path: '',
         loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule),
     },
+    {
+        path: 'main-layout',
+        loadChildren: () => import('./components/main-layout/main-layout.module').then(m => m.MainLayoutModule),
+    },
+
 
     {
-        path: '',
-        loadChildren: () => import('./components/shared.module').then(m => m.SharedModule),
+        path: 'home',
+        component: PrincipalComponent,
+        children: [
+            {
+
+
+
+
+                path: '',
+                loadChildren: () => import('./components/transferencias/transferencias.module').then(m => m.TransferenciasModule),
+
+
+            }
+
+
+        ]
     },
-    // {
-    //     path: 'usuarios',
-    //     loadChildren: () => import('./components/usuarios/usuarios.module').then(m => m.UsuariosModule),
-    // },
-    // { path: '', component: LoginComponent },
 
 
 

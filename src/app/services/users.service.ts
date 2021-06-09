@@ -14,14 +14,26 @@ export class UserService {
         this.url = "https://jsonplaceholder.typicode.com/users";
     }
 
-    getTabla(): Observable<any> {
-
-
+    login(rut, password, getToken = null) {
+        var params;
+        if (getToken != null) {
+          params = {
+            rut: rut,
+            password: password,
+            getToken: getToken
+          }
+        } else {
+          params = {
+            rut: rut,
+            password: password
+          }
+        }
         let headers = new HttpHeaders({
-            'Content-type': 'application/json',
-        })
-
-        return this._http.get(this.url, { headers: headers })
-            .pipe(map(response => response));
-    }
+          'Content-Type': 'application/json'
+        });
+    
+        return this._http.post(this.url + 'login', params, { headers: headers })
+          .pipe(map(res => res));
+      }
+    
 }

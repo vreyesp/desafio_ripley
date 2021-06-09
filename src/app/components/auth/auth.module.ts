@@ -11,7 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 
 import { AuthRoutingModule } from './auth.routing.module';
-import { SharedModule } from '../shared.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { Ng9RutModule } from 'ng9-rut';
 
 
 
@@ -19,9 +20,11 @@ import { SharedModule } from '../shared.module';
     declarations: [LoginComponent],
     imports: [
 
-        SharedModule,
+        ReactiveFormsModule,
         AuthRoutingModule,
+        MDBBootstrapModule.forRoot(),
 
+        Ng9RutModule
 
 
     ]
