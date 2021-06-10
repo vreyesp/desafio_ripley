@@ -1,1 +1,89 @@
-<p>transferir works!</p>
+<!-- <form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Number</mat-label>
+        <input type="text" placeholder="Buscar Destinatario" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of destinatarios | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form> -->
+<!--
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of destinatarios | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form> -->
+
+<!--
+-->
+
+<!-- <div class="row">
+    <div class="col-3">
+        <div class="form-outline">
+            <label class="form-label" for="form8Example2">Monto:</label>
+            <mat-form-field>
+                <input type="email" id="form8Example2" class="form-control" matInput [formControl]="monto" />
+            </mat-form-field>
+
+        </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col-3">
+        <div class="form-outline">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Transferir</button>
+
+        </div>
+    </div>
+</div> -->
+
+
+<div class="ng-autocomplete">
+    <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+    <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+</div>
+<br>
+<div class="card" style="padding: 10px;">
+    <div class="col">
+        <div class="row">
+            <h6 style="color: black; font-weight: 500;;">Detalle del destinatario</h6>
+        </div>
+        <div class="row"><b>Nombre: </b>&nbsp;&nbsp;&nbsp; {{ (selected)? selected.name:'' }}</div>
+        <div class="row"><b>Correo: </b>&nbsp;&nbsp;&nbsp;{{ (selected)? selected.correo:'' }}</div>
+        <div class="row"><b>Banco: </b>&nbsp;&nbsp;&nbsp;{{ (selected)?selected.banco:'' }}</div>
+        <div class="row"><b>Tipo de cuenta:&nbsp;&nbsp;&nbsp;</b> {{ (selected)?selected.tipoCuenta:'' }}</div>
+    </div>
+</div>
+<br><br>
+<div class="card" style="padding: 10px;">
+
+    <h6 style="color: black; font-weight: 500;;">monto a transferir:</h6>
+
+    <br><br>
+    <div class="row">
+        <div class="col-6"><input type="text" placeholder="Ej: 20000" width="-webkit-fill-available" id="montoTotal" [(ngModel)]="montoTotal"></div>
+        <div class="col-6"></div>
+    </div>
+    <br>
+    <div class="row">
+
+        <div class="col-3"><button class="btn btn-primary btn-block mb-4" (click)="transferir()" [disabled]="!selected || !montoTotal">Transferir</button></div>
+
+
+    </div>
+</div>

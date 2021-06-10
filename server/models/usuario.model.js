@@ -1,5 +1,3 @@
-
-
 'use strict'
 
 var mongoose = require("mongoose");
@@ -8,15 +6,16 @@ var Schema = mongoose.Schema;
 var UserSchema = Schema({
     rut: String,
     dv: String,
+    nombre: String,
     password: String,
     refToken: String,
     active: Boolean,
-    email: String, 
+    email: String,
     drafts: [{
-        draftId: {type: Schema.ObjectId, ref: 'Draft'}
+        draftId: { type: Schema.ObjectId, ref: 'Draft' }
     }],
-    recordId: String});
-    idCliente: Number,
+    destinatarios: []
+});
 
 
-module.exports = mongoose.model("usuarios", UserSchema);
+module.exports = mongoose.model("users", UserSchema);

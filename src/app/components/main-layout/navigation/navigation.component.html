@@ -10,19 +10,16 @@
 
         <div class="list-group list-group-flush">
 
-            <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+            <a routerLink="/home" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Inicio
             </a>
-            <a routerLink="profiles/profile1" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
+            <a routerLink="/home/nuevo-destinatario" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <mdb-icon fas icon="user" class="mr-3"></mdb-icon>Nuevo Destinatario
             </a>
-            <a routerLink="tables/table1" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
+            <a routerLink="/home/transferir" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <mdb-icon fas icon="fa fa-arrow-circle-right" class="mr-3"></mdb-icon>Transferir
             </a>
-            <a routerLink="tables/table1" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
+            <a routerLink="/home/historial" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <mdb-icon fas icon="table" class="mr-3"></mdb-icon>Historial
 
 
@@ -41,7 +38,7 @@
         <!-- Navbar brand -->
         <logo class="ml-3">
             <a class="navbar-brand">
-                <strong class="blue-text">¡Bienvenido Victor!</strong>
+                <strong class="blue-text">¡Bienvenido!</strong>
             </a>
         </logo>
 
@@ -59,13 +56,10 @@
 
             <!-- Search form -->
             <ul class="navbar-nav nav-flex-icons">
-
-
                 <li class="nav-item">
-                    <a class="nav-link border border-light">
+                    <a class="nav-link border border-light" (click)="logout()">
                         <mdb-icon fas icon="fas fa-door-open" class="mr-2"></mdb-icon>Cerrar Sesión
                     </a>
-
                 </li>
 
             </ul>

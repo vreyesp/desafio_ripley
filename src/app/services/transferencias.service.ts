@@ -2,45 +2,55 @@ import { Injectable } from "@angular/core";
 import { map } from 'rxjs/operators';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { config } from "./config";
 
 @Injectable()
-export class Transferencias {
+export class TransferenciasService {
     [x: string]: any;
 
     public url;
     public identity;
     public token;
     constructor(private _http: HttpClient) {
-        this.url = "https://jsonplaceholder.typicode.com/users";
+      this.url = (config.local)? "http://localhost:4000/api/v1": "http://128.199.13.218:4000/api/v1";
     }
 
-    postNuevoDestinatario(data): Observable<any> {
-
-
+    postNuevoDestinatario(user): Observable<any> {
+      const token = sessionStorage.getItem("identity-ripley");
         let headers = new HttpHeaders({
             'Content-type': 'application/json',
+            'Authorization': "Bearer " + token
         })
-
-        var params;
-        params = {
-            //faltan params
-        }
-        return this._http.post(this.url + '/nuevo/destinatario', params, { headers: headers })
+        var params = user
+        return this._http.post(this.url + '/tr/nuevo/destinatario', params, { headers: headers })
             .pipe(map(response => response));
     }
 
 
     getHistorial(): Observable<any> {
 
+      const token = sessionStorage.getItem("identity-ripley");
+        let headers = new HttpHeaders({
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + token
+        })
+
+        return this._http.get(this.url + '/tr/historial', { headers: headers });
+    }
+
+    getTipoCUenta(): Observable<any> {
+console.log("hola");
+
+      var params = {}
+     const token = sessionStorage.getItem("identity-ripley");
 
         let headers = new HttpHeaders({
             'Content-type': 'application/json',
+            'Authorization': "Bearer " + token
         })
 
-        return this._http.get(this.url + 'get/historial', { headers: headers })
-            .pipe(map(response => response));
+        return this._http.get(this.url + '/tr/list/cuentas', { headers: headers })
     }
-
 
     getBancos(): Observable<any> {
 
@@ -64,9 +74,33 @@ export class Transferencias {
         params = {
             //faltan params
         }
-        return this._http.post(this.url + '/nueva/transferencia', params, { headers: headers })
+        return this._http.post(this.url + '/tr/nueva/transferencia', params, { headers: headers })
             .pipe(map(response => response));
     }
 
+
+    getMisdestinatarios(): Observable<any>  {
+      var params = {}
+      const token = sessionStorage.getItem("identity-ripley");
+
+      let headers = new HttpHeaders({
+          'Content-type': 'application/json',
+          'Authorization': "Bearer " + token
+      })
+
+        return this._http.get(this.url + '/tr/list/destinatarios', { headers: headers })
+    }
+
+    transferir(data): Observable<any>  {
+      var params = data
+      const token = sessionStorage.getItem("identity-ripley");
+
+      let headers = new HttpHeaders({
+          'Content-type': 'application/json',
+          'Authorization': "Bearer " + token
+      })
+
+        return this._http.post(this.url + '/tr/transferir',params, { headers: headers });
+    }
 
 }

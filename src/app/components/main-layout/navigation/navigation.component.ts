@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class NavigationComponent implements OnInit {
 
   clicked: boolean;
 
-  constructor() {
+  constructor(private _router: Router) {
     this.clicked = this.clicked === undefined ? false : true;
   }
 
@@ -22,4 +23,8 @@ export class NavigationComponent implements OnInit {
     this.clicked = val;
   }
 
+  logout(): void{
+    sessionStorage.setItem("identity-ripley", "");
+    this._router.navigate(['/']);
+  }
 }

@@ -1,1 +1,81 @@
-<p>nuevo-destinatario works!</p>
+<h2>Nuevo Destinatario</h2>
+<form [formGroup]="destinatarioForm">
+
+
+    <div class="row">
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form8Example1" class="form-control" formControlName="rut" formatRut />
+                <label class="form-label" for="form8Example1">Rut</label>
+            </div>
+        </div>
+        <div class="col">
+            <!-- Email input -->
+            <div class="form-outline">
+                <input type="email" id="form8Example2" class="form-control" formControlName="nombre" />
+                <label class="form-label" for="form8Example2">Nombre</label>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <!-- Name input -->
+            <div class="form-outline">
+                <input type="text" id="form8Example1" class="form-control" formControlName="correo" />
+                <label class="form-label" for="form8Example1">Correo</label>
+            </div>
+        </div>
+        <div class="col">
+            <!-- Email input -->
+            <div class="form-outline">
+                <input type="email" id="form8Example2" class="form-control" formControlName="telefono" />
+                <label class="form-label" for="form8Example2">Telefono</label>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <select class="browser-default custom-select" formControlName="banco">
+                <option selected>Seleccione Banco </option>
+                <option *ngFor="let item of bancos" value={{item.name}}>{{item.name}}</option>
+
+            </select>
+        </div>
+        <div class="col">
+            <select class="browser-default custom-select" formControlName="tipoCuenta">
+                <option selected>Seleccione Tipo de Cuenta </option>
+                <option *ngFor="let item of tipoCuenta" value="{{item.nombreTipo}}">{{item.nombreTipo}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-3">
+            <!-- Name input -->
+            <div class="form-outline">
+                <input type="text" id="form8Example3" class="form-control" formControlName="nroCuenta" />
+                <label class="form-label" for="form8Example3">Nº de Cuenta</label>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="container">
+        <!-- Name input -->
+        <div class="form-outline">
+            <button type="submit" (click)="crearDestinatario()" class="btn btn-primary btn-block mb-4" [disabled]="destinatarioForm.invalid">Crear Destinatario</button>
+
+        </div>
+    </div>
+
+</form>

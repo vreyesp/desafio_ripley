@@ -16,6 +16,11 @@ import { MatListModule } from '@angular/material/list';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MainLayoutModule } from './components/main-layout/main-layout.module';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng9RutModule } from 'ng9-rut';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -38,7 +43,13 @@ import { PrincipalComponent } from './components/principal/principal.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    MatTableModule,
+    ReactiveFormsModule,
+    FormsModule,
+    Ng9RutModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

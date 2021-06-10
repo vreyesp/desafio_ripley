@@ -7,6 +7,7 @@ var app = express();
 //Rutas
 
 var user_routes = require("./routes/user.route");
+var transferencia_routes = require("./routes/transferencia.route");
 
 const fileUpload = require('express-fileupload')
 
@@ -30,6 +31,9 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use("/api/v1/user/", user_routes);
+app.use("/api/v1/tr/", transferencia_routes);
+
 
 module.exports = app;

@@ -1,5 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'server/guard/auth.guard';
 import { PrincipalComponent } from './components/principal/principal.component';
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
             }
 
 
-        ]
+        ],
+        canActivate: [AuthGuard]
     },
 
 

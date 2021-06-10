@@ -9,12 +9,12 @@ export class PrincipalComponent implements OnInit {
   specialPage: boolean;
 
   private specialPages: any[] = [
-    '/auth',
-    '/pages/register',
-    '/pages/lock',
-    '/pages/pricing',
-    '/pages/single-post',
-    '/pages/post-listing'
+    '/home',
+
+    '/home/nuevo-destinatario',
+    '/home/trasferir',
+    '/home/historial',
+
   ];
   constructor() { }
 

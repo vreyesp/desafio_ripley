@@ -10,35 +10,19 @@ var app = require('../index');
 
 var user = encodeURIComponent(config.mongoUser);
 var p = encodeURIComponent(config.mongoP);
-var mongoURL = `mongodb://${user}:${p}@${config.mongoUrl}?authSource=${config.mongoAuthSource}`;
+var mongoURL = `mongodb+srv://victor:victor123@cluster0.5bbmo.mongodb.net/desafio-ripley?retryWrites=true&w=majority`;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoURL, { useNewUrlParser: true })
     .then(() => {
         console.log("Conexión con MongoDB establecida");
-
-
         if (config.local) {
             app.listen(port, () => {
                 console.log("Servidor Node está corriendo en el puerto local: " + port)
             });
-        }
-        else {
+        } else {
             console.log('https');
-            https.createServer({
-                key: fs.readFileSync('./ssl/solnet.cl/Clave.key'),
-                cert: fs.readFileSync('./ssl/solnet.cl/SSL Certificate - .solnet.cl.crt'),
-                requestCert: false,
-                rejectUnauthorized: false
-            }, app).listen(port, () => {
-                console.log(`SSL`);
-                console.log(`Servidor Node está corriendo en el puerto ${port}`)
-            })
+
         }
     })
     .catch(err => console.log(err));
-
-// app.listen(port, () => {
-//     console.log("Servidor Node está corriendo en el puerto: " + port)
-// });
-
