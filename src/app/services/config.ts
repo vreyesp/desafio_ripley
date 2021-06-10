@@ -1,3 +1,3 @@
 export const config =  {
-  local: true
+  local: false
 }
